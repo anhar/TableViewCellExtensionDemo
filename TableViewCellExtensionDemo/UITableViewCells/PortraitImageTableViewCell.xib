@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="KGk-i7-Jjw" customClass="PortraitImageTableViewCell" customModule="TableViewCellExtensionDemo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="119.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XxO-RZ-6CK">
+                        <rect key="frame" x="239" y="0.0" width="81" height="120"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="XxO-RZ-6CK" secondAttribute="height" multiplier="214:317" id="1Dp-fy-hU8"/>
+                            <constraint firstAttribute="height" constant="120" id="i2v-jg-zAW"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bxx-0G-qiF">
+                        <rect key="frame" x="16" y="11" width="213" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zlo-iD-uKu">
+                        <rect key="frame" x="265" y="44.5" width="30" height="30"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="tAC-tQ-bZe">
+                                <rect key="frame" x="5" y="5" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="PK3-1r-36L"/>
+                                    <constraint firstAttribute="width" secondItem="tAC-tQ-bZe" secondAttribute="height" multiplier="1:1" id="ht1-MA-QZk"/>
+                                    <constraint firstAttribute="height" constant="20" id="tbc-oU-PH9"/>
+                                </constraints>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tAC-tQ-bZe" firstAttribute="centerX" secondItem="Zlo-iD-uKu" secondAttribute="centerX" id="4vZ-li-ADa"/>
+                            <constraint firstAttribute="width" constant="30" id="9dy-qO-JWe"/>
+                            <constraint firstItem="tAC-tQ-bZe" firstAttribute="centerY" secondItem="Zlo-iD-uKu" secondAttribute="centerY" id="OcX-MK-RkO"/>
+                            <constraint firstAttribute="width" secondItem="Zlo-iD-uKu" secondAttribute="height" multiplier="1:1" id="xgv-cO-EyM"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="XxO-RZ-6CK" firstAttribute="leading" secondItem="Bxx-0G-qiF" secondAttribute="trailing" constant="10" id="6TU-Ob-mPk"/>
+                    <constraint firstItem="Bxx-0G-qiF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Aro-hb-VGF"/>
+                    <constraint firstItem="Bxx-0G-qiF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="BI1-Tg-DOv"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="XxO-RZ-6CK" secondAttribute="bottom" id="GBy-SM-HpS"/>
+                    <constraint firstAttribute="trailing" secondItem="XxO-RZ-6CK" secondAttribute="trailing" id="Me3-Y8-0D7"/>
+                    <constraint firstItem="Zlo-iD-uKu" firstAttribute="centerY" secondItem="XxO-RZ-6CK" secondAttribute="centerY" id="eny-x1-FM7"/>
+                    <constraint firstItem="XxO-RZ-6CK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="kgP-vd-9FY"/>
+                    <constraint firstItem="Zlo-iD-uKu" firstAttribute="centerX" secondItem="XxO-RZ-6CK" secondAttribute="centerX" id="pwY-Eb-z8U"/>
+                    <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Bxx-0G-qiF" secondAttribute="bottom" id="yfz-tr-4px"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="activityContainerView" destination="Zlo-iD-uKu" id="t1v-nt-3M1"/>
+                <outlet property="activityIndicator" destination="tAC-tQ-bZe" id="c6w-4J-f9H"/>
+                <outlet property="portraitImageView" destination="XxO-RZ-6CK" id="aQ1-zx-tvp"/>
+                <outlet property="titleLabel" destination="Bxx-0G-qiF" id="wOd-7f-TSt"/>
+            </connections>
+            <point key="canvasLocation" x="35" y="92"/>
+        </tableViewCell>
+    </objects>
+</document>
