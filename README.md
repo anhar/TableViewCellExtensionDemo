@@ -24,7 +24,7 @@ To make this easier for beginners starting with iOS development I've decided to 
 
 In the file a `Reusable` protocol has been declared:
 
-```
+```swift
 protocol Reusable: class {
     static var reuseIdentifier: String { get }
     static var nib: UINib? { get }
@@ -33,7 +33,7 @@ protocol Reusable: class {
 
 Thanks to protocol extensions we can provide a default implementation for this protocol:
 
-```
+```swift
 extension Reusable {
     static var reuseIdentifier: String { return String(describing: Self.self) }
     static var nib: UINib? {
@@ -48,7 +48,7 @@ extension Reusable {
 
 In order for this protocol extension to work we need to provide a `nibExists(nibName: String) -> Bool` function as an extension to the `UINib` class:
 
-```
+```swift
 let fileTypeNib = "nib"
 
 extension UINib {
@@ -64,7 +64,7 @@ extension UINib {
 In order for this `UINib` function to work we need to provide a `fileExists(at path: String) -> Bool` function.
 Since `UINib` is a subclass of `NSObject` we can place the function as an extension of `NSObject` to have this method in all classes that are a subclass of `NSObject`:
 
-```
+```swift
 extension NSObject {
     static func fileExists(at path: String) -> Bool {
         return FileManager.default.fileExists(atPath: path)
@@ -76,7 +76,7 @@ extension NSObject {
 
 Now that we have the protocol all setup, we can provide extensions to `UITableView` and `UICollectionView` that relies less on hardcoded strings and is more type safe:
 
-```
+```swift
 extension UITableView {
     func registerReusableCell<T: UITableViewCell>(_: T.Type) where T: Reusable {
         if let nib = T.nib {
@@ -106,7 +106,7 @@ extension UITableView {
 
 Create a `UITableViewCell` that implements the `Reusable` protocol:
 
-```
+```swift
 class MyTableViewCell: UITableViewCell, Reusable {
 
 }
@@ -114,13 +114,13 @@ class MyTableViewCell: UITableViewCell, Reusable {
 
 All one needs to do now is to register the `UITableViewCell` class:
 
-```
+```swift
 tableView.registerReusableCell(MyTableViewCell.self)
 ```
 
 And use the `UITableViewCell` class like so:
 
-```
+```swift
 override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(indexPath: indexPath) as MyTableViewCell
 }
@@ -137,7 +137,7 @@ It's built based upon a bunch of protocol and structs.
 
 ##### `ViewModelCapable`
 
-```
+```swift
 protocol ViewModelCapable {
     var title: String { get }
     var sections: [SectionCapable] { get }
@@ -148,7 +148,7 @@ This protocol has a title string and an array of sections.
 
 ##### SectionCapable
 
-```
+```swift
 public enum SectionId {
     case tableware
     case sneakers
@@ -178,7 +178,7 @@ This protocol has:
 
 The root protocol is defined like so:
 
-```
+```swift
 public enum CellId {
     case icon
     case text
@@ -200,7 +200,7 @@ We also have other protocols based upon the root protocol:
 
 ###### LocalImageCellCapable
 
-```
+```swift
 protocol LocalImageCellCapable: CellCapable {
     var image: UIImage? { get }
 }
@@ -210,7 +210,7 @@ protocol LocalImageCellCapable: CellCapable {
 
 ###### ImageURLCellCapable
 
-```
+```swift
 protocol ImageURLCellCapable: CellCapable {
     var imageURL: URL? { get }
 }
@@ -227,7 +227,7 @@ You can read more about it on this StackOverflow post: [Why Choose Struct Over C
 
 ###### CellViewModel
 
-```
+```swift
 struct CellViewModel: CellCapable {
     let cellId: CellId
     let title: String
@@ -243,7 +243,7 @@ Nothing special, just a standard implementation of the protocol.
 
 ###### ImageCellViewModel
 
-```
+```swift
 struct ImageCellViewModel: LocalImageCellCapable {
     let cellId: CellId
     let title: String
@@ -276,7 +276,7 @@ This has a few befinits:
 
 Instead we provide a getter to generate the `UIImage`:
 
-```
+```swift
 var image: UIImage? {
     if let imageName = self.imageName {
         return UIImage(named: imageName)
@@ -287,7 +287,7 @@ var image: UIImage? {
 
 ###### ImageURLCellViewModel
 
-```
+```swift
 struct ImageURLCellViewModel: ImageURLCellCapable {
     let cellId: CellId
     let title: String
@@ -312,7 +312,7 @@ struct ImageURLCellViewModel: ImageURLCellCapable {
 
 ##### SectionViewModel
 
-```
+```swift
 struct SectionViewModel: SectionCapable {
     let sectionId: SectionId
     let title: String
@@ -337,7 +337,7 @@ struct SectionViewModel: SectionCapable {
 - By setting up the `ViewModel` like this you can mix and match what types of cells you display in each section just by switching what type of `CellViewModel` you use.
 	- Take a look at the `promotedPerson` variable for an example
 
-```
+```swift
 struct ViewModel: ViewModelCapable {
     let sections: [SectionCapable]
     let title: String
