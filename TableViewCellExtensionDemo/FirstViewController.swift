@@ -29,7 +29,7 @@ class FirstViewController: UITableViewController, UITableViewDataSourcePrefetchi
         tableView.delegate = self
         tableView.estimatedRowHeight = 44
         tableView.prefetchDataSource = self
-        tableView.contentInset = UIEdgeInsetsMake(16, 0, 16, 0)
+        tableView.contentInset = UIEdgeInsets.init(top: 16, left: 0, bottom: 16, right: 0)
         tableView.separatorStyle = .singleLine
         tableView.registerReusableCell(IconTableViewCell.self)
         tableView.registerReusableCell(TextTableViewCell.self)
@@ -52,7 +52,7 @@ class FirstViewController: UITableViewController, UITableViewDataSourcePrefetchi
             switch result {
             case let .success(image):
                 self.images[indexPath] = image
-                self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
+                self.tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.none)
             case let .failure(.generic(error)):
                 print("Failed to fetch image url: \(imageURL)\n with error: \(error)")
             case let .failure(.cachedDataConversion(error)):
@@ -168,7 +168,7 @@ class FirstViewController: UITableViewController, UITableViewDataSourcePrefetchi
     //MARK: UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
