@@ -10,14 +10,6 @@ These assets have been taken from the following sites:
 - [https://www.publicdomainpictures.net/](https://www.publicdomainpictures.net/)
 - [https://commons.wikimedia.org/](https://commons.wikimedia.org/)
 
-## Dependencies
-
-I tried to limit the amount of external third party libraries and frameworks but [Cocoapods](https://cocoapods.org/) is used in this example project. The only pod dependency used is the following micro framework:
-
-- [antitypical/Result](https://github.com/antitypical/Result) - A result enum with `.success` and `.failure` cases that is easily extendable. IMHO it will most likely be added to the Swift standard library soon.
-
-To make this easier for beginners starting with iOS development I've decided to check in the `Pods/` folder into the repository. This is something I normally don't do.
-
 ## Design choices
 
 ### `Extensions.swift`
