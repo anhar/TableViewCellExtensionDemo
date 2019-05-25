@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Result
 
 final class CachableImageApiRequest: NSObject {
 
